@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Relationship Analyzer</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+</head>
+<body>
+  <div class="bg-orb orb-1"></div>
+  <div class="bg-orb orb-2"></div>
+
+  <div id="app" class="app-shell">
+    <header class="hero">
+      <div class="hero-text">
+        <span class="eyebrow">RELATIONSHIP ANALYZER</span>
+        <h1>연인 관계 지속성 테스트</h1>
+        <p class="subtitle">
+          감정 상태, 관계 안정성, 갈등 패턴, 미래 정렬도를 바탕으로
+          지금 관계의 흐름을 분석해요.
+        </p>
+      </div>
+      <div class="hero-side">
+        <div id="progressText" class="progress-text">1 / 30</div>
+      </div>
+    </header>
+
+    <div class="progress">
+      <div id="progressFill" class="progress-fill"></div>
+    </div>
+
+    <section class="question-card glass-card">
+      <div class="question-top">
+        <div id="questionCategory" class="category-badge"></div>
+      </div>
+
+      <div id="question" class="question"></div>
+      <div id="options" class="options"></div>
+
+      <button id="nextBtn" class="primary-btn" style="display:none;">다음 질문</button>
+    </section>
+
+    <div id="result"></div>
+  </div>
+
+  <script src="questions.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
