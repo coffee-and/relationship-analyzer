@@ -1,0 +1,38 @@
+@import "./theme.css";
+
+:root {
+  font-family: "Malgun Gothic", "맑은 고딕", sans-serif;
+  color: #2b2b35;
+  background: linear-gradient(180deg, #fff8fb 0%, #fff6f9 100%);
+
+  --bg: #fff6f8;
+  --text: #302c38;
+  --muted: #7f7285;
+  --shadow: 0 24px 70px rgba(222, 173, 210, 0.18);
+  --shadow-soft: 0 12px 30px rgba(205, 164, 214, 0.12);
+  --gradient-main: linear-gradient(135deg, #75d9f5 0%, #b98ef9 45%, #ff55b7 100%);
+  --gradient-card: linear-gradient(180deg, rgba(255,255,255,0.76), rgba(255,248,252,0.88));
+  --button-primary: linear-gradient(135deg, #87dbf5 0%, #d68cff 52%, #ff5fbd 100%);
+  --button-soft: linear-gradient(135deg, #ffe0ef 0%, #eaf5ff 100%);
+  --radius-2xl: 38px;
+  --radius-xl: 28px;
+  --radius-lg: 22px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+button {
+  font: inherit;
+}
