@@ -1,6 +1,7 @@
 import { CATEGORY_META } from "../../data/config.js";
 
-// 질문 카드 하나만 책임지게 해서 재사용성을 높여요.
+// 질문 카드 컴포넌트는 각 질문과 선택지를 보여주는 역할
+
 export function QuestionCard({
   question,
   questionNumber,
@@ -12,13 +13,25 @@ export function QuestionCard({
 
   return (
     <section className="card question-card">
-      <div className="question-card__header">
-        <span className="badge badge--soft">{categoryLabel}</span>
+      <div className="question-card__top">
+        <div className="question-card__badge-wrap">
+          <div className="question-card__badge-group">
+            <span className="badge badge--soft">{categoryLabel}</span>
+            <span className="question-card__index">Q {String(questionNumber).padStart(2, "0")}</span>
+          </div>
+        </div>
+
+        <div className="question-card__line" />
       </div>
 
       <h2 className="question-card__title">
-        {questionNumber}. {question.prompt}
+        <span className="question-card__title-number">{questionNumber}.</span>{" "}
+        {question.prompt}
       </h2>
+
+      <p className="question-card__hint">
+        지금 가장 가까운 느낌을 하나 골라줘.
+      </p>
 
       <div className="option-list">
         {question.options.map((option) => {
@@ -31,7 +44,8 @@ export function QuestionCard({
               className={`option-card ${isSelected ? "option-card--selected" : ""}`}
               onClick={() => onSelectOption(option.id)}
             >
-              {option.label}
+              <span className="option-card__text">{option.label}</span>
+              <span className="option-card__dot" />
             </button>
           );
         })}
@@ -39,11 +53,11 @@ export function QuestionCard({
 
       <button
         type="button"
-        className="button button--primary button--full"
+        className="button button--primary button--full question-card__next"
         disabled={!selectedOptionId}
         onClick={onNext}
       >
-        다음 질문
+        다음 질문으로
       </button>
     </section>
   );

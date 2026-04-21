@@ -2,19 +2,24 @@
 
 :root {
   font-family: "Malgun Gothic", "맑은 고딕", sans-serif;
-  color: #2b2b35;
-  background: linear-gradient(180deg, #fff8fb 0%, #fff6f9 100%);
+  color: #564d5d;
+  background: linear-gradient(180deg, #faf4f7 0%, #f5edf2 100%);
 
-  --bg: #fff6f8;
-  --text: #302c38;
-  --muted: #7f7285;
-  --shadow: 0 24px 70px rgba(222, 173, 210, 0.18);
-  --shadow-soft: 0 12px 30px rgba(205, 164, 214, 0.12);
-  --gradient-main: linear-gradient(135deg, #75d9f5 0%, #b98ef9 45%, #ff55b7 100%);
-  --gradient-card: linear-gradient(180deg, rgba(255,255,255,0.76), rgba(255,248,252,0.88));
-  --button-primary: linear-gradient(135deg, #87dbf5 0%, #d68cff 52%, #ff5fbd 100%);
-  --button-soft: linear-gradient(135deg, #ffe0ef 0%, #eaf5ff 100%);
-  --radius-2xl: 38px;
+  --bg: #f7eef3;
+  --text: #564d5d;
+  --text-soft: #6f6575;
+  --muted: #938896;
+
+  --shadow: 0 20px 50px rgba(185, 154, 178, 0.12);
+  --shadow-soft: 0 10px 24px rgba(185, 154, 178, 0.08);
+
+  --gradient-main: linear-gradient(135deg, #a9cfe0 0%, #c3a7df 50%, #e2a4c5 100%);
+  --button-primary: linear-gradient(135deg, #a7cddd 0%, #c6a7e3 50%, #dfa1c4 100%);
+  --button-soft: linear-gradient(135deg, #f5e8ef 0%, #edf4f9 100%);
+
+  --card-bg: linear-gradient(180deg, rgba(255,255,255,0.78), rgba(248,241,245,0.9));
+
+  --radius-2xl: 40px;
   --radius-xl: 28px;
   --radius-lg: 22px;
 }
@@ -31,6 +36,8 @@ body,
 
 body {
   margin: 0;
+  color: var(--text);
+  background: linear-gradient(180deg, #faf4f7 0%, #f5edf2 100%);
 }
 
 button {
