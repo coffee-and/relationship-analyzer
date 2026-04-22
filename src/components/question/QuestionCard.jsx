@@ -1,7 +1,6 @@
-import { CATEGORY_META } from "../../data/config.js";
+import { CATEGORY_META } from '../../data/config.js';
 
-// 질문 카드 컴포넌트는 각 질문과 선택지를 보여주는 역할
-
+// 질문 카드 컴포넌트
 export function QuestionCard({
   question,
   questionNumber,
@@ -17,7 +16,9 @@ export function QuestionCard({
         <div className="question-card__badge-wrap">
           <div className="question-card__badge-group">
             <span className="badge badge--soft">{categoryLabel}</span>
-            <span className="question-card__index">Q {String(questionNumber).padStart(2, "0")}</span>
+            <span className="question-card__index">
+              Q {String(questionNumber).padStart(2, '0')}
+            </span>
           </div>
         </div>
 
@@ -25,13 +26,11 @@ export function QuestionCard({
       </div>
 
       <h2 className="question-card__title">
-        <span className="question-card__title-number">{questionNumber}.</span>{" "}
+        <span className="question-card__title-number">{questionNumber}.</span>{' '}
         {question.prompt}
       </h2>
 
-      <p className="question-card__hint">
-        지금 가장 가까운 느낌을 하나 골라줘.
-      </p>
+      <p className="question-card__hint">지금 가장 가까운 느낌을 하나 골라줘.</p>
 
       <div className="option-list">
         {question.options.map((option) => {
@@ -41,11 +40,10 @@ export function QuestionCard({
             <button
               key={option.id}
               type="button"
-              className={`option-card ${isSelected ? "option-card--selected" : ""}`}
+              className={`option-card ${isSelected ? 'option-card--selected' : ''}`}
               onClick={() => onSelectOption(option.id)}
             >
               <span className="option-card__text">{option.label}</span>
-              <span className="option-card__dot" />
             </button>
           );
         })}
