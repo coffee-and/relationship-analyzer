@@ -1,13 +1,13 @@
-@import './theme.css';
+@import "./theme.css";
 
 :root {
-  font-family: 'Malgun Gothic', '맑은 고딕', sans-serif;
+  font-family: "Malgun Gothic", "맑은 고딕", sans-serif;
   color: #564d5d;
   background: linear-gradient(180deg, #faf4f7 0%, #f5edf2 100%);
 
   --bg: #f7eef3;
-  --text: #564d5d;
-  --text-soft: #6f6575;
+  --text: #5f5667;
+  --text-soft: #7a7182;
   --muted: #938896;
 
   --shadow: 0 20px 50px rgba(185, 154, 178, 0.12);

@@ -1,8 +1,10 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import html2canvas from "html2canvas";
 import { APP_COPY, CATEGORY_META } from "../../data/config.js";
 import { MetricGrid } from "./MetricGrid.jsx";
 import { SectionCard } from "./SectionCard.jsx";
+import { PremiumLockedSection } from "../premium/PremiumLockedSection.jsx";
+import { PremiumReport } from "../premium/PremiumReport.jsx";
 
 async function shareResult(shareConfig, relationshipLevelTitle, finalValue) {
   const shareText = `내 연인 관계 지속성 테스트 결과: ${relationshipLevelTitle} (최종 판단값 ${finalValue})`;
@@ -25,6 +27,12 @@ async function shareResult(shareConfig, relationshipLevelTitle, finalValue) {
 
 export function ResultView({ analysis, answers, onRestart, shareConfig }) {
   const captureRef = useRef(null);
+  const [isPremium, setIsPremium] = useState(false);
+
+  function handlePaymentClick() {
+    // TODO: 실제 결제 연동 시 이곳에서 Toss/Stripe 결제 페이지로 연결해요.
+    setIsPremium(true);
+  }
 
   async function handleCapture() {
     if (!captureRef.current) return;
@@ -44,7 +52,6 @@ export function ResultView({ analysis, answers, onRestart, shareConfig }) {
 
   return (
     <>
-      {/* 저장 범위 시작 */}
       <div ref={captureRef} className="capture-export">
         <section className="capture-panel capture-panel--cozy">
           <div className="capture-panel__floating capture-panel__floating--top" />
@@ -116,11 +123,13 @@ export function ResultView({ analysis, answers, onRestart, shareConfig }) {
                 {analysis.relationshipLevel.title}
               </h3>
             </div>
+
             <div className="result-overview-card__score">
               <span>FINAL SCORE</span>
               <strong>{analysis.finalValue}</strong>
             </div>
           </div>
+
           <p className="result-overview-card__desc">
             {analysis.relationshipLevel.desc}
           </p>
@@ -136,6 +145,7 @@ export function ResultView({ analysis, answers, onRestart, shareConfig }) {
           <p className="result-card__desc">
             관계의 각 영역을 조금 더 세부적으로 볼 수 있어요.
           </p>
+
           <MetricGrid
             items={[
               {
@@ -155,37 +165,19 @@ export function ResultView({ analysis, answers, onRestart, shareConfig }) {
           />
         </section>
       </div>
-      {/* 저장 범위 끝 */}
 
-      <SectionCard
-        title={analysis.emotionReport.title}
-        desc={analysis.emotionReport.desc}
-        points={analysis.emotionReport.points}
-      />
-
-      <SectionCard
-        title={analysis.stabilityReport.title}
-        desc={analysis.stabilityReport.desc}
-        points={analysis.stabilityReport.points}
-      />
-
-      <SectionCard
-        title={analysis.conflictReport.title}
-        desc={analysis.conflictReport.desc}
-        points={analysis.conflictReport.points}
-      />
-
-      <SectionCard
-        title={analysis.futureReport.title}
-        desc={analysis.futureReport.desc}
-        points={analysis.futureReport.points}
-      />
+      {isPremium ? (
+        <PremiumReport analysis={analysis} />
+      ) : (
+        <PremiumLockedSection onClickPayment={handlePaymentClick} />
+      )}
 
       <section className="card result-card">
         <h3 className="result-card__title">내가 선택한 답변 보기</h3>
         <p className="result-card__desc">
           선택 흐름을 다시 보면 결과를 더 쉽게 이해할 수 있어요.
         </p>
+
         <ul className="answer-list">
           {answers.map((answer) => (
             <li key={answer.questionId}>
